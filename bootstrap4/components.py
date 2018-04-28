@@ -7,7 +7,7 @@ from bootstrap4.utils import render_tag, add_css_class
 from .text import text_value
 
 
-def render_alert(content, alert_type=None, dismissable=True):
+def render_alert(content, alert_type=None, dismissable=True, close_btn='&times;'):
     """
     Render a Bootstrap alert
     """
@@ -17,8 +17,8 @@ def render_alert(content, alert_type=None, dismissable=True):
     css_classes = ['alert', 'alert-' + text_value(alert_type)]
     if dismissable:
         css_classes.append('alert-dismissable')
-        button = '<button type="button" class="close" ' + \
-                 'data-dismiss="alert" aria-hidden="true">&times;</button>'
+        button = '<button type="button" class="close" data-dismiss="alert" ' \
+                 'aria-hidden="true">%s</button>' % close_btn
     button_placeholder = '__BUTTON__'
     return mark_safe(render_tag(
         'div',

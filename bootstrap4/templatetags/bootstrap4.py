@@ -687,7 +687,7 @@ def bootstrap_button(*args, **kwargs):
 
 
 @register.simple_tag
-def bootstrap_alert(content, alert_type='info', dismissable=True):
+def bootstrap_alert(content, alert_type='info', dismissable=True, close_btn='&times;'):
     """
     Render an alert
 
@@ -713,6 +713,11 @@ def bootstrap_alert(content, alert_type='info', dismissable=True):
 
             :default: ``True``
 
+        close_btn
+            str, Text that goes inside the close button
+
+            :default: ``&times;``
+
     **Usage**::
 
         {% bootstrap_alert content %}
@@ -722,7 +727,7 @@ def bootstrap_alert(content, alert_type='info', dismissable=True):
         {% bootstrap_alert "Something went wrong" alert_type='error' %}
 
     """
-    return render_alert(content, alert_type, dismissable)
+    return render_alert(content, alert_type, dismissable, close_btn)
 
 
 @register.tag('buttons')
